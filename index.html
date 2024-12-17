@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <script src="./assets/js/index.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>THE LIBRARY</h1>
+    </header>
+    <main>
+        <div id="search-container" >
+            <span>Search by</span>
+            <ul id="dropdown" >
+                <li>Title</li>
+                <li>Author</li>
+            </ul>
+            <span id="categories-dropdown" >Categories
+                <img src="./assets/icons/arrow-dropdown.svg" alt="dropdownIcon">
+            </span>
+            <form id="search-form" action="">
+                <input id="search-bar" type="search" placeholder="Search..." maxlength="35" >
+                <img src="./assets/icons/searchIcon.svg" alt="searchIcon">
+            </form>
+        </div>
+        <div class="card-container">
+            
+        </div>
+        <button id="add-book-btn" type="button">Add Book</button>
+        <img id="main-image" src="./assets/images/library.jpg" alt="blurry library image">
+    </main>
+    <div id="modal-backdrop">
+        <img id="close-modal-icon" src="./assets/icons/close.svg" alt="">
+        <div id="modal-container">
+            <div id="modal-body">
+                <form id="modal-form" action="">
+                    <input type="text" placeholder="The Lord of the Rings: The Fellowship of the Ring" maxlength="60" >
+                    <input type="text" placeholder="J.R.R Tolkien"  maxlength="40" >
+                    <input type="text" placeholder="1024"  maxlength="4" pattern="\d{2,4}" required>
+                    <div id="readBlock">
+                        <label for="readConfirmation">Already read</label>
+                        <input id="readConfirmation" type="checkbox">
+                    </div>
+                    <button id="formBtn" type="button">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <template data-card-template >
+        <div class="card" >
+            <div class="book-title-container" >
+                <img src="./assets/icons/book.svg" alt="bookIcon">
+                <h3 data-card-book >book title</h3>
+            </div>
+            <div class="book-author-container" >
+                <img src="./assets/icons/author.svg" alt="authorIcon">
+                <h3 data-card-author >author</h3>
+            </div>
+            <div class="book-pages-container" >
+                <img src="./assets/icons/readBook.svg" alt="readIcon">
+                <h3 data-card-pages >pages</h3>
+            </div>
+            <div class="book-read-container" >
+                <img src="./assets/icons/box.svg" alt="readIcon">
+                <h3 data-card-read >not read yet</h3>
+            </div>
+            <div class="card-btn-container" >
+                <button class="removeBtn" data-card-removeBtn >Remove</button>
+                <button class="readBtn" data-card-readBtn >Read</button>
+            </div>
+        </div>
+    </template>
+</body>
+</html>
