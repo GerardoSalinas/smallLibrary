@@ -57,7 +57,7 @@ const cardUtils = {
     updateCards: function (event) {
         const value = event.target.value.toLowerCase();
         const cards = document.querySelector(".card-container").children;
-        for (let card of cards){
+        Array.from(cards).map((card) => {
             const bookTitle = card.querySelector("[data-card-book]").innerText.toLowerCase();
             const author = card.querySelector("[data-card-author]").innerText.toLowerCase();
             if (bookTitle.includes(value) || author.includes(value)){
@@ -67,9 +67,8 @@ const cardUtils = {
                 console.log("tarjeta oculta" + card);
                 card.style.display = "none"; 
             }
-        }
+        })
     }
-
 }
 
 
@@ -116,6 +115,12 @@ addBookBtn.addEventListener("click", modal.toggle);
 function extractInputData (){
     const inputData = Array.from(modal.form.getElementsByTagName("input"))
     .map((input) => input.type === "checkbox" ? input.checked : input.value)
+    for (const value of inputData){
+        if (value === ""){
+            alert("Please fill the form");
+            return null;
+        }
+    }
     return inputData;
 }
 
@@ -150,10 +155,12 @@ Book.prototype.remove = function () {
 const formBtn = document.getElementById("formBtn");
 formBtn.addEventListener("click", function () {
     const inputData = extractInputData();
-    const newBook = new Book(inputData[0], inputData[1], inputData[2], inputData[3]);
-    newBook.save();
-    cardUtils.loadLatestBook();
-    modal.toggle();
+    if (inputData){
+        const newBook = new Book(inputData[0], inputData[1], inputData[2], inputData[3]);
+        newBook.save();
+        cardUtils.loadLatestBook();
+        modal.toggle();
+    }
 })
 
 const searchBar = document.getElementById("search-bar");
