@@ -6,7 +6,7 @@
 :root {
     --card-background: rgba(255, 217, 219, 0.9);
     --btn-background: #FFFFF0;
-    --main-font: Roboto;
+    --search-container-background: rgb(161, 149, 249);
     --input-valid-outline: rgb(163, 199, 224);
     --input-invalid-outline: rgb(230, 55, 70);
 }
@@ -41,11 +41,10 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* gap: 1rem; */
 }
 
 #search-container {
-    background-color: cadetblue;
+    background-color: var(--search-container-background);
     display: flex;
     width: 100%;
     height: 3rem;
@@ -78,17 +77,13 @@ main {
     display: flex;
 }
 
-
-
-
 #search-form {
-    height: min-content;
     display: flex;
     justify-content: row;
     align-items: center;
-    width: 20%;
-    background-color: grey;
+    background-color: rgb(150, 150, 150);
     padding: 0.5rem 1rem;
+    max-width: 80%;
     border-radius: 1.5rem;
 }
 
@@ -96,7 +91,7 @@ main {
     background-color: transparent;
     border: none;
     font-size: 1.2rem;
-    width: 95%;
+    width: 100%;
     padding: 0.1rem 0.2rem;
 }
 
@@ -184,7 +179,7 @@ main {
 #modal-backdrop {
     width: 100vw;
     height: 100vh;
-    background: rgba(255, 255, 255, 0.57);
+    background: rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(9.1px);
     -webkit-backdrop-filter: blur(9.1px);
@@ -232,6 +227,7 @@ main {
 #modal-form {
     display: none;
     padding: 1rem;
+    border-radius: 1rem;
     background-color: var(--btn-background);
     flex-direction: column;
     box-shadow: 0px 0px 10px 8px rgba(0, 0, 0, 0.2);
@@ -267,5 +263,55 @@ main {
     text-align: center;
     align-self: center;
     cursor: pointer;
+}
+
+
+@media screen and (max-width: 500px) { 
+    header {
+        text-align: center;
+    }
+
+    #add-book-btn,
+    #add-book-btn:focus {
+        transform: translateX(15%);
+    }
+    #add-book-btn {
+        position: absolute;
+        height: 3rem;
+        top: 10rem;
+        margin: 0px auto;
+        z-index: 3;
+    }
+
+    #search-container span {
+        display: none;
+    }
+
+    .card-container {
+        width: 90%;
+        height: 65%;
+        position: absolute;
+        left: 5%;
+        top: 30%;
+    }
+
+    #modal-container {
+        width: 90%;
+    }
+
+    .card {
+        height: 100%;
+    }
+    .card-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(auto-fit,50%) ;
+    }
+
+    .card-btn-container {
+        display: flex;
+        width: 50%;
+        flex-direction: column;
+        row-gap: 0.5rem;
+    }
 }
 
